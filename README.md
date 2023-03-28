@@ -1,0 +1,2 @@
+# RSO
+Rozproszone systemy obiektowe
