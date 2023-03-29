@@ -6,13 +6,17 @@
 #include <unistd.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 
-#define PORT 9734
+#define PORT 1234
 
 void handle_sqrt_request(int client_sockfd, int rq_id, const char* value_bytes) {
     double num;
     memcpy(&num, value_bytes, sizeof(double));
+    printf("%lf", num);
     double squared_num = sqrt(num);
+    int header = htobe32(0x01000001);
+    write(client_sockfd, &header, sizeof(int));
     write(client_sockfd, &rq_id, sizeof(int));
     write(client_sockfd, &squared_num, sizeof(double));
 }
@@ -28,6 +32,8 @@ void handle_time_request(int client_sockfd, int rq_id) {
     printf("str with time: %s\n", time_str);
     printf("rq_id: %d\n", rq_id);
     int len = strlen(time_str);
+    int header = htobe32(0x01000002);
+    write(client_sockfd, &header, sizeof(int));
     write(client_sockfd, &rq_id, sizeof(int));
     write(client_sockfd, &len, sizeof(int));
     write(client_sockfd, time_str, len);
@@ -59,7 +65,7 @@ int main() {
         printf("Server waiting for connection...\n");
 
         client_len = sizeof(client_address);
-        client_sockfd = accept(server_sockfd, (struct sockaddr *)&client_address, &client_len);
+        client_sockfd = accept(server_sockfd, (struct sockaddr *) &client_address, &client_len);
 
         printf("Client connected from %s:%d\n", inet_ntoa(client_address.sin_addr), ntohs(client_address.sin_port));
 
@@ -95,6 +101,5 @@ int main() {
     }
 
     close(server_sockfd);
-
-    return
+    return 0;
 }
