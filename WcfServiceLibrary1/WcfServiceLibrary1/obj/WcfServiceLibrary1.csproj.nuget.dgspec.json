@@ -1,0 +1,73 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj": {}
+  },
+  "projects": {
+    "E:\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj",
+        "projectName": "WcfServiceLibrary1",
+        "projectPath": "E:\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj",
+        "packagesPath": "C:\\Users\\Marcin\\.nuget\\packages\\",
+        "outputPath": "E:\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "configFilePaths": [
+          "C:\\Users\\Marcin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "Google.Apis": {
+              "target": "Package",
+              "version": "[1.60.0, )"
+            },
+            "Google.Apis.Auth": {
+              "target": "Package",
+              "version": "[1.60.0, )"
+            },
+            "Google.Apis.Books.v1": {
+              "target": "Package",
+              "version": "[1.60.0.2955, )"
+            },
+            "Google.Apis.Core": {
+              "target": "Package",
+              "version": "[1.60.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

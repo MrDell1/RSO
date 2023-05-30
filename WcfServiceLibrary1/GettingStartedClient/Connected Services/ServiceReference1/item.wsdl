@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://Microsoft.ServiceModel.Samples" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" targetNamespace="http://Microsoft.ServiceModel.Samples" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://Microsoft.ServiceModel.Samples/Imports">
+      <xsd:import schemaLocation="http://localhost:8733/WcfServiceLibrary1/LibraryService/?xsd=xsd0" namespace="http://Microsoft.ServiceModel.Samples" />
+      <xsd:import schemaLocation="http://localhost:8733/WcfServiceLibrary1/LibraryService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8733/WcfServiceLibrary1/LibraryService/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8733/WcfServiceLibrary1/LibraryService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary1" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="WcfServiceLibrary_GetBooks_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBooks" />
+  </wsdl:message>
+  <wsdl:message name="WcfServiceLibrary_GetBooks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBooksResponse" />
+  </wsdl:message>
+  <wsdl:message name="WcfServiceLibrary_GetBookDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookDetails" />
+  </wsdl:message>
+  <wsdl:message name="WcfServiceLibrary_GetBookDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="WcfServiceLibrary_GetBookDetails_NoSuchBookExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/WcfServiceLibrary1" name="detail" element="q1:NoSuchBookException" />
+  </wsdl:message>
+  <wsdl:portType name="WcfServiceLibrary">
+    <wsdl:operation name="GetBooks">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/GetBooks" message="tns:WcfServiceLibrary_GetBooks_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/GetBooksResponse" message="tns:WcfServiceLibrary_GetBooks_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookDetails">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/GetBookDetails" message="tns:WcfServiceLibrary_GetBookDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/GetBookDetailsResponse" message="tns:WcfServiceLibrary_GetBookDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/GetBookDetailsNoSuchBookExceptionFault" name="NoSuchBookExceptionFault" message="tns:WcfServiceLibrary_GetBookDetails_NoSuchBookExceptionFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
