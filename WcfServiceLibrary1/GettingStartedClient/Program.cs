@@ -15,7 +15,7 @@ namespace GettingStartedClient
             
             try
             {
-                Console.WriteLine(proxy.GetBooks("a"));
+                
                 while (true)
                 {
                     Console.WriteLine("1 - search by id, 2 - search by other things, 3 - exit");
@@ -25,7 +25,7 @@ namespace GettingStartedClient
                     switch (option)
                     {
                         case "1":
-                            Console.WriteLine("Giv id:");
+                            Console.WriteLine("Give id:");
                             var query = Console.ReadLine();
                             var book = proxy.GetBookDetails(query);
                             Console.WriteLine("Title: " + book.Title);
@@ -43,7 +43,7 @@ namespace GettingStartedClient
                             
                             break;
                         case "2":
-                            Console.WriteLine("Giv other things:");
+                            Console.WriteLine("Search by query:");
                             var query2 = Console.ReadLine();
                             var bookIds = proxy.GetBooks(query2);
                             for (int i = 0; i < bookIds.Length; i++)
