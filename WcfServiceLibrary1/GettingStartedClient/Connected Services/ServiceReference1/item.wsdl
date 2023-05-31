@@ -8,6 +8,12 @@
       <xsd:import schemaLocation="http://localhost:8733/WcfServiceLibrary1/LibraryService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary1" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="WcfServiceLibrary_Test_InputMessage">
+    <wsdl:part name="parameters" element="tns:Test" />
+  </wsdl:message>
+  <wsdl:message name="WcfServiceLibrary_Test_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestResponse" />
+  </wsdl:message>
   <wsdl:message name="WcfServiceLibrary_GetBooks_InputMessage">
     <wsdl:part name="parameters" element="tns:GetBooks" />
   </wsdl:message>
@@ -24,6 +30,10 @@
     <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/WcfServiceLibrary1" name="detail" element="q1:NoSuchBookException" />
   </wsdl:message>
   <wsdl:portType name="WcfServiceLibrary">
+    <wsdl:operation name="Test">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/Test" message="tns:WcfServiceLibrary_Test_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/TestResponse" message="tns:WcfServiceLibrary_Test_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetBooks">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/GetBooks" message="tns:WcfServiceLibrary_GetBooks_InputMessage" />
       <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/GetBooksResponse" message="tns:WcfServiceLibrary_GetBooks_OutputMessage" />

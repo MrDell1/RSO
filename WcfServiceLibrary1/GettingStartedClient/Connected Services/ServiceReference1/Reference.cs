@@ -155,6 +155,12 @@ namespace GettingStartedClient.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://Microsoft.ServiceModel.Samples", ConfigurationName="ServiceReference1.WcfServiceLibrary")]
     public interface WcfServiceLibrary {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/Test", ReplyAction="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/TestResponse")]
+        string Test();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/Test", ReplyAction="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/TestResponse")]
+        System.Threading.Tasks.Task<string> TestAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/GetBooks", ReplyAction="http://Microsoft.ServiceModel.Samples/WcfServiceLibrary/GetBooksResponse")]
         string[] GetBooks(string query);
         
@@ -195,6 +201,14 @@ namespace GettingStartedClient.ServiceReference1 {
         
         public WcfServiceLibraryClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public string Test() {
+            return base.Channel.Test();
+        }
+        
+        public System.Threading.Tasks.Task<string> TestAsync() {
+            return base.Channel.TestAsync();
         }
         
         public string[] GetBooks(string query) {

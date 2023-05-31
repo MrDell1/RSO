@@ -20,6 +20,11 @@ namespace WcfServiceLibrary1
             ApplicationName = "LibraryWCF",
             ApiKey = API_KEY,
         });
+
+        public String Test()
+        {
+            return "a";
+        }
         async public Task<Book> GetBookDetails(string id)
         {
             Console.WriteLine("Executing a book details search request");
@@ -40,18 +45,64 @@ namespace WcfServiceLibrary1
             };
             throw new FaultException<NoSuchBookException>(exception, exception.Message);
         }
+        async public Task<List<Book>> Search(string query)
+        {
+            Console.WriteLine("Executing a book year search request");
+            try
+            {
+                var years = query.Split('-');
+                var year1 = int.Parse(years[0]);
+                var year2 = int.Parse(years[1]);
+                List<Book> books = new List<Book>();
+                for (int i = year1; i <= year2; i++)
+                {
+                    var result = await service.Volumes.List(query).ExecuteAsync();
+                    if (result != null && result.Items != null)
+                    {
+                        for (int j = 0; j < result.Items.Count; j++)
+                        {
+                            var s = result.Items[j];
+                            Book book = new Book();
+                            book.Title = s.VolumeInfo.Title;
+                            book.Id = s.Id;
+                            book.Authors = (List<string>)s.VolumeInfo.Authors;
+                            book.Created = s.VolumeInfo.PublishedDate;
+                            books.Add(book);
+                        }
+                    }
+                    else
+                    {
+                        var exception = new NoSuchBookException
+                        {
+                            Message = "Book not found"
+                        };
+                        throw new FaultException<NoSuchBookException>(exception, exception.Message);
+                    }
+                }
+                return books;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception();
 
-        async public Task<List<string>> GetBooks(string query)
+            }
+        }
+        async public Task<List<Book>> GetBooks(string query)
         {
             Console.WriteLine("Executing a book id search request");
             var result = await service.Volumes.List(query).ExecuteAsync();
             if (result != null && result.Items != null)
             {
-                List<string> books = new List<string>();
+                List<Book> books = new List<Book>();
                 for (int i = 0; i < result.Items.Count; i++)
                 {
-                    var s = result.Items[i].Id;
-                    books.Add(s);
+                    var s = result.Items[i];
+                    Book book = new Book();
+                    book.Title = s.VolumeInfo.Title;
+                    book.Id = s.Id;
+                    book.Authors = (List<string>)s.VolumeInfo.Authors;
+                    book.Created = s.VolumeInfo.PublishedDate;
+                    books.Add(book);
                 }
                 return books;
             }

@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "E:\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj": {}
+    "C:\\Wszystko\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj": {}
   },
   "projects": {
-    "E:\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj": {
+    "C:\\Wszystko\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj",
+        "projectUniqueName": "C:\\Wszystko\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj",
         "projectName": "WcfServiceLibrary1",
-        "projectPath": "E:\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj",
-        "packagesPath": "C:\\Users\\Marcin\\.nuget\\packages\\",
-        "outputPath": "E:\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\obj\\",
+        "projectPath": "C:\\Wszystko\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\WcfServiceLibrary1.csproj",
+        "packagesPath": "C:\\Users\\leszc\\.nuget\\packages\\",
+        "outputPath": "C:\\Wszystko\\RSO\\WcfServiceLibrary1\\WcfServiceLibrary1\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "configFilePaths": [
-          "C:\\Users\\Marcin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\leszc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

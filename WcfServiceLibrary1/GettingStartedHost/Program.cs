@@ -9,7 +9,7 @@ namespace GettingStartedHost
     {
         static void Main(string[] args)
         {
-            Uri baseAddress = new Uri("http://localhost:8733/WcfServiceLibrary1/");
+            Uri baseAddress = new Uri("http://192.168.171.216/WcfServiceLibrary1/");
 
             // Step 2: Create a ServiceHost instance.
             ServiceHost selfHost = new ServiceHost(typeof(LibraryService), baseAddress);
@@ -18,7 +18,7 @@ namespace GettingStartedHost
                 try
                 {
                     // Step 3: Add a service endpoint.
-                    selfHost.AddServiceEndpoint(typeof(WcfServiceLibrary), new WSHttpBinding(), "LibraryService");
+                    selfHost.AddServiceEndpoint(typeof(WcfServiceLibrary), new BasicHttpBinding(), "LibraryService");
                     // Step 4: Enable metadata exchange.
                     ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
                     smb.HttpGetEnabled = true;

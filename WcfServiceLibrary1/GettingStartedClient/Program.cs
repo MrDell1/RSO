@@ -12,7 +12,7 @@ namespace GettingStartedClient
             WcfServiceLibraryClient proxy = new WcfServiceLibraryClient();
 
             Console.WriteLine("Client application started.");
-            
+            Console.WriteLine(proxy.Test());
             try
             {
                 
@@ -45,10 +45,19 @@ namespace GettingStartedClient
                         case "2":
                             Console.WriteLine("Search by query:");
                             var query2 = Console.ReadLine();
-                            var bookIds = proxy.GetBooks(query2);
-                            for (int i = 0; i < bookIds.Length; i++)
+                            var books = proxy.GetBooks(query2);
+                            for (int i = 0; i < books.Length; i++)
                             {
-                                Console.WriteLine("Id: " + bookIds[i]);
+                                Console.WriteLine("Id: " + books[i].Id);
+                                Console.WriteLine("Title: " + books[i].Title);
+                                if (book[j].Authors != null)
+                                {
+                                    Console.WriteLine("Authors: ");
+                                    for (int j = 0; j < books[i].Authors.Length; j++)
+                                    {
+                                        Console.Write(books[i].Authors[j]);
+                                    }
+                                }
                             }
                             Console.WriteLine();
                             break;

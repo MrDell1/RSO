@@ -54,6 +54,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\WcfServiceLibrary1\WcfServiceLibrary1.csproj">
       <Project>{70eb20a2-03d0-4d6a-9e6f-9b3b2c3d54fa}</Project>
       <Name>WcfServiceLibrary1</Name>

@@ -10,12 +10,16 @@ namespace WcfServiceLibrary1
         public interface WcfServiceLibrary
     {
         [OperationContract]
-        Task<List<string>> GetBooks(string query);
+        Task<List<Book>> Search(string query);
+        [OperationContract]
+        Task<List<Book>> GetBooks(string query);
 
         [OperationContract]
         [FaultContract(typeof(NoSuchBookException))]
         Task<Book> GetBookDetails(string id);
         }
+    
+
         [DataContract]
         public class Book
         {
@@ -27,6 +31,9 @@ namespace WcfServiceLibrary1
             public string Description { get; set; }
             [DataMember]
             public List<string> Authors { get; set; }
+            [DataMember]
+            public string Created { get; set; }
+            
         }
 
         [DataContract]
